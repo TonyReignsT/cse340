@@ -135,6 +135,29 @@ nav {
   padding: 1rem;
 }
 
+/* ---------------------------------------- */
+/* Error Message Page */
+/* ---------------------------------------- */
+.error-message {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem;
+  margin: 2rem;
+  font-weight: 200;
+}
+.error-title {
+  text-align: center;
+  padding: 2rem;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------- */
+/* Footer */
+/* ---------------------------------------- */
+footer p {
+  text-align: center;
+}
 
 
 /* ---------------------------------------- */
