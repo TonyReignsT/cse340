@@ -1,4 +1,4 @@
-const pool = require("../database/")
+const pool = require("../database/")  // Load db connection
 
 /* ***************************
  *  Get all classification data
@@ -25,8 +25,20 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+// Getting one vehicle
+async function getVehicleById(inv_id){
+  try {
+    const sql = `SELECT * FROM public.inventory WHERE inv_id = $1`
+    const data = await pool.query(sql, [inv_id])
+
+    // Return first row
+    return data.rows[0]
+  } catch (error) {
+    throw error
+  }
+}
 
 
 
 
-module.exports = {getClassifications, getInventoryByClassificationId}
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById}
