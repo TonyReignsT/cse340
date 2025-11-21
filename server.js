@@ -58,6 +58,22 @@ app.use(async (err, req, res, next)=> {
 })
 
 
+// Intentional Error handling
+// 500 Error handling
+app.use(async (err, req, res, next) => {
+  console.error("500 error handler activated:", err.message);
+
+  const nav = await utilities.getNav()
+
+  res.status(500).render("errors/error", {
+    title: "Server Error",
+    message: "Something went wrong on the server!",
+    error: err.message,
+    nav
+  });
+});
+
+
 
 /* ***********************
  * Local Server Information

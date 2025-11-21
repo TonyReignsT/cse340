@@ -20,7 +20,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 
-// Loading vehicle utilities
+// Loading vehicle utilities/ Details
 invCont.buildDetailById = async function (req, res, next) {
     try {
         // Get the ID from the URL
@@ -46,7 +46,7 @@ invCont.buildDetailById = async function (req, res, next) {
             vehicleHTML
         })
     } catch(error){
-        next(error) // Sends the error to middleware
+        next(error) // This line Sends the error to middleware
 
     }
 }

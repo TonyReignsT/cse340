@@ -44,7 +44,7 @@ util.buildClassificationGrid = async function (data) {
             grid += '<div class="namePrice">'
             grid += '<hr />'
             grid += '<h2>'
-            grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '
+            grid += '<a href="../../inv/detail/' + vehicle.inv_id + '" title="View '  // makes part of the url on the browser
             + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">'
             + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
 
@@ -65,14 +65,19 @@ util.buildClassificationGrid = async function (data) {
 util.buildVehicleHTML = function (vehicle) {
     return `
         <section class="vehicle-detail">
-        <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+        <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}/>
         
-        <p class="price"> Price: $${vehicle.inv_price}</p>
-        <p class="miles">Milage: ${vehicle.inv_miles} miles</p>
+        <p class="price"> Price: $${vehicle.inv_price.toLocaleString()}</p>
+        <p class="miles">Milage: ${vehicle.inv_miles.toLocaleString()} miles</p>
 
-        <p>${vehicle.inv_description}
+        <p>${vehicle.inv_description} </p>
         </section>
     `
 }
+
+// Code for the intentional error handling
+util.throwTestError = (req, res, next) => {
+    throw new Error("Intentional Error!!!")
+};
 
 module.exports = util
