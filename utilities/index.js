@@ -64,13 +64,19 @@ util.buildClassificationGrid = async function (data) {
 // Utility function for the vehicle details
 util.buildVehicleHTML = function (vehicle) {
     return `
-        <section class="vehicle-detail">
-        <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}/>
-        
-        <p class="price"> Price: $${vehicle.inv_price.toLocaleString()}</p>
-        <p class="miles">Milage: ${vehicle.inv_miles.toLocaleString()} miles</p>
+         <section class="vehicle-detail">
+            <div class="vehicle-image">
+                <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+            </div>
 
-        <p>${vehicle.inv_description} </p>
+            <div class="vehicle-info">
+                <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+
+                <p class="price">Price: $${vehicle.inv_price.toLocaleString()}</p>
+                <p class="miles">Mileage: ${vehicle.inv_miles.toLocaleString()} miles</p>
+
+                <p class="description">${vehicle.inv_description}</p>
+            </div>
         </section>
     `
 }
