@@ -292,6 +292,9 @@ footer p {
 
 /* Small Screens  */
 @media screen and (max-width: 480px) {
+    body {
+      background-image: none;
+    }
     .nav-links ul {
         flex-direction: column;
         align-items: stretch; 
@@ -310,6 +313,9 @@ footer p {
 
 
 @media screen and (max-width: 768px) {
+    body {
+      background-image: none
+    };
     #wrapper {
         width: 95%;
         padding: 1rem;
@@ -379,6 +385,9 @@ footer p {
 /* vehicle classification page  */
 
 @media (max-width: 480px) {
+    body {
+      background-image: none;
+    }
     .page-title {
         font-size: 1.5rem;
         margin: 1.5rem 0;
