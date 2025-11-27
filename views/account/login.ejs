@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+<body>
+   <h1><%- title %></h1> 
+
+    <!-- Displays flash message if provided -->
+     <% if (locals.message) { %>
+            <div class="message">
+                <%= message %>
+            </div>
+       <% } %>
+
+
+    <!-- Login Form  -->
+     <form action="/account/login" method="post">
+        <label for="account_email">Email:</label><br>
+        <input type="email" id="email" name="account_email"><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <input type="submit" value="Login">
+
+        <div class="register-link">
+        <p>No account? <a href="/account/register">Sign-up</a></p>
+     </div>
+     </form>
+
+     
+</body>
+</html>
