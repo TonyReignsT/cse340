@@ -86,4 +86,13 @@ util.throwTestError = (req, res, next) => {
     throw new Error("Intentional Error!!!")
 };
 
+/* ******************************************
+* Middleware to handle async errors
+****************************************** */
+util.handleErrors = (fn) => {
+    return function (req, res, next) {
+        Promise.resolve(fn(req, res, next)).catch(next)
+    }
+}
+
 module.exports = util

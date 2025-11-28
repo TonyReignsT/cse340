@@ -16,6 +16,7 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const utilities = require("./utilities/");
+const bodyParser = require("body-parser");
 
 /* ***********************
  * Middleware
@@ -46,6 +47,9 @@ app.use(function (req, res, next) {
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * Routes
