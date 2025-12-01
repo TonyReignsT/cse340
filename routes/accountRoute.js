@@ -1,3 +1,4 @@
+const regValidate = require('../utilities/account-validation')
 const express = require("express")
 const router = new express.Router()
 const utilities = require("../utilities")
@@ -10,8 +11,12 @@ router.get("/login", accountController.buildLogin)
 // Registration 
 router.get("/register", accountController.buildRegister)
 
-// Enable the Registrtion Route 
-router.post('/register', utilities.handleErrors(accountController.registerAccount))
+// Process the registration data and Enable the Registrtion Route
+router.post(
+    '/register',  // path being watched for in the route
+    regValidate.registrationRules(), // contains the rules to be used in the validation process
+    regValidate.checkRegData,  // check validation and handle errors
+    utilities.handleErrors(accountController.registerAccount))  // calls the controller to handle the registration, if no errors occur in the validation process
 
 
 module.exports = router
