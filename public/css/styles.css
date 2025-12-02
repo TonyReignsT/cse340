@@ -324,6 +324,27 @@ input:required:valid {
   cursor: pointer;
 }
 
+
+/* ---------------------------------------- */
+/* Management Page links */
+/* ---------------------------------------- */
+.management-links ul li{
+  list-style: none;
+  padding: 1rem;
+  cursor: pointer;
+
+}
+
+.management-links ul li a {
+  text-decoration: none;
+  color: #73C8D2;
+}
+
+.management-links ul li a:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
 /* ---------------------------------------- */
 /* Footer */
 /* ---------------------------------------- */
@@ -427,6 +448,12 @@ footer p {
   .vehicle-info {
     text-align: center;
   }
+
+  /* Form  */
+  form {
+    width: 80%;
+    padding: 1.5rem;
+  }
 }
 
 /* vehicle classification page  */
@@ -448,4 +475,23 @@ footer p {
     .namePrice span {
         font-size: 1rem;
     }
+
+    /* Form  */
+    form {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  #pswBtn {
+    width: 100%;
+    text-align: center;
+  }
 }
