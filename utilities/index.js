@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 const invModel = require("../models/inventory-model")
 const util = {}
 
@@ -116,5 +118,41 @@ util.buildClassificationList = async function (classification_id = null) {
     classificationList += "</select>"
     return classificationList
   }
+
+
+/* ****************************************
+* Middleware to check token validity
+**************************************** */
+util.checkJWTToken = (req, res, next) => {
+ if (req.cookies.jwt) {
+  jwt.verify(
+   req.cookies.jwt,
+   process.env.ACCESS_TOKEN_SECRET,
+   function (err, accountData) {
+    if (err) {
+     req.flash("notice", "Please log in")
+     res.clearCookie("jwt")
+     return res.redirect("/account/login")
+    }
+    res.locals.accountData = accountData
+    res.locals.loggedin = 1 // flagged as authorized
+    next()
+   })
+ } else {
+  next()
+ }
+}
+
+/* ****************************************
+ *  Check Login - authorization check
+ * ************************************ */
+util.checkLogin = (req, res, next) => {
+    if (res.locals.loggedin) {    // check to see if the login flag exists and is "true" in the response object.
+        next()
+    } else {
+        req.flash("notice", "Please log in.")
+        return res.redirect("/account/login")  // redirects to the login route, because the login flag does not exist.
+    }
+}
 
 module.exports = util
