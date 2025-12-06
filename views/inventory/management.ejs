@@ -13,3 +13,15 @@
         </li>
     </ul>
 </div>
+
+<h2>Manage Inventory</h2>
+<p>Choose a classification to see those inventory items.</p>
+<%- classificationSelect %>
+
+<!-- where inventory items returned from the controller will be displayed. -->
+<table id="inventoryDisplay"></table>    
+
+<!-- will display a message if JavaScript is disabled  -->
+<noscript>JavaScript must be enabled to use this page.</noscript>
+
+<script src="../../js/inventory.js"></script>

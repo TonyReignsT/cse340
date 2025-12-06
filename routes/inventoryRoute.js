@@ -13,6 +13,10 @@ router.get("/detail/:inv_id", invController.buildDetailById)
 // route to build inventory management view
 router.get("/", invController.buildManagement)
 
+// route to build 
+// router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventory/:classification_id", invController.getInventoryJSON)
+
 // route to build add classification view
 router.get("/add-classification", invController.buildAddClassification)
 module.exports = router
