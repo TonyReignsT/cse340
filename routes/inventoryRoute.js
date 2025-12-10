@@ -3,6 +3,7 @@ const express = require("express")
 const router = new express.Router() // route object
 const invController = require("../controllers/invController") // bringing in the controller
 const invValidate = require("../utilities/inventory-validation")
+const utilities = require("../utilities")
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", invController.buildByClassificationId)
@@ -15,11 +16,11 @@ router.get("/", invController.buildManagement)
 
 // route to build 
 // router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
-router.get("/getInventory/:classification_id", invController.getInventoryJSON)
+// router.get("/getInventory/:classification_id", invController.getInventoryJSON)
 
 // route to build add classification view
 router.get("/add-classification", invController.buildAddClassification)
-module.exports = router
+
 
 // route to process add classification
 router.post(
@@ -28,10 +29,20 @@ router.post(
     invValidate.checkClassificationData,
     invController.buildAddClassification
 )
-
+// ------------------------------------------------------------------------------------------
+/* ***************************
+ *  Get inventory for AJAX Route
+ *  Select inv item activity
+ * ************************** */
+router.get(
+    "/getInventory/:classification_id",
+    utilities.checkAccountType,
+    utilities.handleErrors(invController.getInventoryJSON)
+)
+// ----------------------------------------------------------------------------------------------
 
 // Route to build add inventory view
-router.get("/add-inventory", invController.buildAddInventory)
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory))
 
 // Route to process add inventory (POST)
 router.post(

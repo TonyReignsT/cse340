@@ -5,7 +5,7 @@ let classificationList = document.querySelector("#classificationList")
 classificationList.addEventListener("change", function () {
     let classification_id = classificationList.value 
     console.log(`classification_id is: ${classification_id}`)
-    let classIdURL = "/inv/getInventory/"+classification_id
+    let classIdURL = "/inv/getInventory/"+classification_id  // route to request json data
     fetch(classIdURL)
     .then(function (response) {
         if  (response.ok) {
@@ -15,7 +15,7 @@ classificationList.addEventListener("change", function () {
     })
     .then(function (data) {
         console.log(data);
-        buildInventoryList(data);
+        buildInventoryList(data);  // utility function
     })
     .catch (function (error) {
         console.log('There was a problem: ', error.message)

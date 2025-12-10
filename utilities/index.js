@@ -154,5 +154,25 @@ util.checkLogin = (req, res, next) => {
         return res.redirect("/account/login")  // redirects to the login route, because the login flag does not exist.
     }
 }
+// ------------------------------------------------------------------------------------------------------
+/* ****************************************
+ *  Check Account Type - authorization for Employee/Admin
+ * ************************************ */
+util.checkAccountType = (req, res, next) => {
+    if (res.locals.accountData) {
+        const accountType = res.locals.accountData.accountType
 
+        // Allow only Employee or Admin account types
+        if (accountType === 'Employee' || accountType === 'admin') {
+            next()
+        } else {
+            req.flash("notice", "You do not have permission to access this resource.")
+            return res.redirect("/account/login")
+        }
+    } else {
+        req.flash("notice", "Please login with appropriate credentials.")
+        return res.redirect("/account/login")
+    }
+}
+// ---------------------------------------------------------------------------------------------------------
 module.exports = util
