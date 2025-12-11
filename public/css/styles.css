@@ -52,7 +52,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 20px 0; 
 }
 
 .siteName a {
@@ -67,37 +67,44 @@ body{
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 0; 
 }
 
 .welcome-msg {
     display: flex;
     flex-direction: column; 
     align-items: flex-end; 
-    font-weight: bold;
-    font-size: 1.1em;
+    line-height: 1.1;     
     color: #333;
-    line-height: 1.2;
+    text-align: right;
 }
 
 .welcome-text {
-    font-size: 0.9em;
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 2px;
 }
 
 .user-name {
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #000;
 }
 
 #tools a {
     color: #0066cc;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1em;
+    font-size: 1.1rem;
+    padding-left: 10px; 
+    border-left: 1px solid #ccc; 
 }
 
 #tools a:hover {
     text-decoration: underline;
+    color: #003366;
 }
-
 
 /* ---------------------------------------- */
 /* Navigation  */
