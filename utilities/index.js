@@ -158,12 +158,40 @@ util.checkLogin = (req, res, next) => {
 /* ****************************************
  *  Check Account Type - authorization for Employee/Admin
  * ************************************ */
+
+// util.checkAccountType = (req, res, next) => {
+//     Debug logging
+//     console.log("=== checkAccountType Debug ===");
+//     console.log("res.locals.accountData:", res.locals.accountData);
+//     console.log("res.locals.loggedin:", res.locals.loggedin);
+    
+//     if (res.locals.accountData) {
+//         Try both property name variations
+//         const accountType = res.locals.accountData.account_type || res.locals.accountData.accountType;
+        
+//         console.log("Account Type found:", accountType);
+
+//         Allow only Employee or Admin account types
+//         if (accountType === 'Employee' || accountType === 'Admin') {
+//             console.log("Access granted!");
+//             next()
+//         } else {
+//             console.log("Access denied - incorrect account type");
+//             req.flash("notice", "You do not have permission to access this resource.")
+//             return res.redirect("/account/login")
+//         }
+//     } else {
+//         console.log("No account data in res.locals");
+//         req.flash("notice", "Please login with appropriate credentials.")
+//         return res.redirect("/account/login")
+//     }
+// }
+
 util.checkAccountType = (req, res, next) => {
     if (res.locals.accountData) {
-        const accountType = res.locals.accountData.accountType
+        const accountType = res.locals.accountData.account_type || res.locals.accountData.accountType;
 
-        // Allow only Employee or Admin account types
-        if (accountType === 'Employee' || accountType === 'admin') {
+        if (accountType === 'Employee' || accountType === 'Admin') {
             next()
         } else {
             req.flash("notice", "You do not have permission to access this resource.")
@@ -174,5 +202,5 @@ util.checkAccountType = (req, res, next) => {
         return res.redirect("/account/login")
     }
 }
-// ---------------------------------------------------------------------------------------------------------
+
 module.exports = util

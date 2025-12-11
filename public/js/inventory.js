@@ -5,17 +5,17 @@ let classificationList = document.querySelector("#classificationList")
 classificationList.addEventListener("change", function () {
     let classification_id = classificationList.value 
     console.log(`classification_id is: ${classification_id}`)
-    let classIdURL = "/inv/getInventory/"+classification_id  // route to request json data
+    let classIdURL = "/inv/getInventory/"+classification_id
     fetch(classIdURL)
     .then(function (response) {
-        if  (response.ok) {
+        if (response.ok) {
             return response.json();
         }
         throw Error("Network response was not OK");
     })
     .then(function (data) {
         console.log(data);
-        buildInventoryList(data);  // utility function
+        buildInventoryList(data);
     })
     .catch (function (error) {
         console.log('There was a problem: ', error.message)
@@ -23,7 +23,7 @@ classificationList.addEventListener("change", function () {
 })
 
 // Build inventory items into HTML table components and inject into DOM
-function buildInventoryList (data) {
+function buildInventoryList(data) {
     let inventoryDisplay = document.getElementById("inventoryDisplay");
     // Set up the table labels
     let dataTable = '<thead>';

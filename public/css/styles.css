@@ -46,6 +46,59 @@ body{
 
 }
 
+/* Welcome Message and logout */
+
+#top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.siteName a {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-msg {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.2;
+}
+
+.welcome-text {
+    font-size: 0.9em;
+}
+
+.user-name {
+    font-size: 1.1em;
+}
+
+#tools a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+#tools a:hover {
+    text-decoration: underline;
+}
+
+
 /* ---------------------------------------- */
 /* Navigation  */
 /* ---------------------------------------- */
@@ -344,6 +397,201 @@ input:required:valid {
   color: blue;
   text-decoration: underline;
 }
+
+
+
+/* Inventory Management Table Styles */
+#inventoryDisplay {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#inventoryDisplay thead {
+    background-color: #333;
+    color: white;
+}
+
+#inventoryDisplay thead th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#inventoryDisplay tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+#inventoryDisplay tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+#inventoryDisplay tbody tr:last-child {
+    border-bottom: 2px solid #333;
+}
+
+#inventoryDisplay td {
+    padding: 12px 15px;
+}
+
+#inventoryDisplay td:first-child {
+    font-weight: 500;
+}
+
+#inventoryDisplay a {
+    color: #0066cc;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+#inventoryDisplay a:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+/* Management Links Styling */
+.management-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.management-links li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.management-links li a:hover {
+    background-color: #0052a3;
+}
+
+
+/* ========================================
+   Inventory Edit Form Styles
+   ======================================== */
+
+.management-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.edit-form fieldset {
+  border: 1px solid #ccc;
+  padding: 2rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+  margin-bottom: 2rem;
+}
+
+.edit-form legend {
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0 0.8rem;
+  color: #1e3f73;
+}
+
+.edit-form label {
+  display: block;
+  margin-top: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.edit-form label.required::after {
+  content: " *";
+  color: #d32f2f;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.4rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.edit-form input:focus,
+.edit-form select:focus,
+.edit-form textarea:focus {
+  outline: none;
+  border-color: #2c5aa0;
+  box-shadow: 0 0 5px rgba(44, 90, 160, 0.3);
+}
+
+.form-buttons {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.8rem 2rem;
+  margin: 0 0.7rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-primary {
+  background: #2c5aa0;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1e3f73;
+}
+
+.btn-secondary {
+  background: #666;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #444;
+}
+
+/* Flash Messages */
+.flash {
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.flash.notice {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.flash.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
 
 /* ---------------------------------------- */
 /* Footer */

@@ -1,9 +1,10 @@
 <!-- The Content Heading  -->
- <% if (title) { %> <!-- determines if the title variable exists -->
-<h1><%= title %></h1>
-<% } else {
-    res.redirect('/') <!-- redirects the response object to the default index route, to deliver the home view -->
-} %>
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } else { %>
+    <h1>Classification</h1>
+<% } %>
+
 
 <!-- A message block  -->
  <%# messages() %> <!--(#) disables this code-->
