@@ -125,6 +125,19 @@ async function deleteInventoryItem(inv_id) {
 }
 
 
+/* ***************************
+ * Search Inventory
+ * ************************** */
+async function searchInventory(searchTerm) {
+  try {
+    const sql = "SELECT * FROM public.inventory WHERE inv_make ILIKE $1 OR inv_model ILIKE $1"
+    // The % signs allow for partial matches (e.g., "Ford" finds "Ford Truck")
+    const data = await pool.query(sql, [`%${searchTerm}%`])
+    return data.rows
+  } catch (error) {
+    console.error("searchInventory error " + error)
+  }
+}
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory, updateInventory, deleteInventoryItem}
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory, updateInventory, deleteInventoryItem, searchInventory}

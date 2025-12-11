@@ -301,4 +301,23 @@ invCont.deleteInventory = async function (req, res, next) {
   }
 }
 
+/* ***************************
+ * Return Search Results
+ * ************************** */
+invCont.searchInventory = async function (req, res, next) {
+  const searchTerm = req.query.searchTerm // Get the term from the URL
+  const searchResults = await invModel.searchInventory(searchTerm) // Ask the model
+  
+  // Reusing the existing grid builder
+  const grid = await utilities.buildClassificationGrid(searchResults) 
+  let nav = await utilities.getNav()
+
+  res.render("./inventory/search", {
+    title: `Search Results for "${searchTerm}"`,
+    nav,
+    grid,
+    errors: null,
+  })
+}
+
 module.exports = invCont

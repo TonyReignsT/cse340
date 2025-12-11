@@ -22,6 +22,10 @@ router.get("/", utilities.checkAccountType, invController.buildManagement)
 // route to build add classification view
 router.get("/add-classification", invController.buildAddClassification)
 
+/* ***************************
+ * Search Inventory Route
+ * ************************** */
+router.get("/search", utilities.handleErrors(invController.searchInventory))
 
 // route to process add classification
 router.post(
